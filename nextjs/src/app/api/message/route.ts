@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import prisma from '../lib/prisma';
+import prisma from '../../../lib/prisma';
  
 // GET get all messages
 export async function GET(request: Request) {
@@ -18,8 +18,8 @@ export async function POST(request: Request) {
   const { messageData } = await request.json();
   console.log(messageData)
 
-  if (messageData.author && messageData.message){
-    let newMessage = await prisma.message.create({ data: { author: messageData?.author, message: messageData?.message, authorDiscordId: messageData?.authorDiscordId }  });
+  if (messageData.authorName && messageData.message){
+    let newMessage = await prisma.message.create({ data: { authorName: messageData?.authorName, message: messageData?.message, authorDiscordId: messageData?.authorDiscordId }  });
 
     return NextResponse.json({ newMessage })
   } else {

@@ -1,0 +1,24 @@
+.base {
+  color: rgb(171, 171, 171);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: fit-content;
+  // justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 5px;
+}
+
+.base:hover {
+  background-color:rgb(239, 239, 239);
+  color: rgb(52, 52, 52);
+}
+
+.icon {
+  width: 14px;
+  margin-right: 6px;
+}
