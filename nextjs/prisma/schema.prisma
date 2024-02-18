@@ -11,8 +11,10 @@ datasource db {
 }
 
 model Message {
-  id              Int    @id @default(autoincrement())
-  author          String
-  authorDiscordId Int    @default(0)
+  id              Int      @id @default(autoincrement())
+  authorName      String   @default("unnamed")
+  authorDiscordId Int      @default(0)
   message         String
+  createdAt       DateTime @default(now())
+  messageTime     DateTime @default(now())
 }

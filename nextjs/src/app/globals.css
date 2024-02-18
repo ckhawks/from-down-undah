@@ -1,4 +1,59 @@
-:root {
+* {
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 800px;
+}
+
+.center-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: none;
+  background-color: rgb(18, 18, 18);
+  color: white;
+  transform: scale(2);
+}
+
+.button:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(1.05);
+}
+
+.link {
+  transition: color 0.2s ease-in-out;
+  color: rgb(208, 16, 16);
+}
+.link:hover {
+  color: rgb(173, 11, 11);
+  cursor: pointer;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: rgb(255, 255, 255);
+  background: rgb(255, 49, 49);
+}
+
+::selection {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 49, 49);
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -73,11 +128,7 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+
 
 html,
 body {
@@ -104,4 +155,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
