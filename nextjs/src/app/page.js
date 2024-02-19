@@ -5,7 +5,7 @@ import styles from "./page.module.scss";
 
 export default function Home() {
   return (
-    <div className={`${styles.main} container`}>
+    <div className={`${styles.main} container content`}>
       <div className={styles.description}>
         <h1>From Down Undah</h1>
         <p>
