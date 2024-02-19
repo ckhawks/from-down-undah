@@ -11,10 +11,19 @@ datasource db {
 }
 
 model Message {
-  id              Int      @id @default(autoincrement())
-  authorName      String   @default("unnamed")
-  authorDiscordId Int      @default(0)
-  message         String
-  createdAt       DateTime @default(now())
-  messageTime     DateTime @default(now())
+  id            Int          @id @default(autoincrement())
+  discordUser   DiscordUser? @relation(fields: [discordUserId], references: [id])
+  discordUserId Int?         @default(0)
+  message       String
+  createdAt     DateTime     @default(now())
+  messageTime   DateTime     @default(now())
+}
+
+model DiscordUser {
+  id        Int       @id @default(autoincrement())
+  discordId BigInt    @unique
+  username  String
+  color     String    @default("CCCCCC")
+  createdAt DateTime  @default(now())
+  Message   Message[]
 }

@@ -1,4 +1,5 @@
 
+import { createDiscordUser, getDiscordUser } from '@/lib/discordUser';
 import { NextResponse } from 'next/server';
 import prisma from '../../../lib/prisma';
  
@@ -12,14 +13,23 @@ export async function GET(request: Request) {
 
 // POST create a message
 export async function POST(request: Request) {
-  console.log(request);
+  // console.log("request", request);
 
   // Extract the `messages` from the body of the request
   const { messageData } = await request.json();
-  console.log(messageData)
+  console.log("messageData", messageData)
 
-  if (messageData.authorName && messageData.message){
-    let newMessage = await prisma.message.create({ data: { authorName: messageData?.authorName, message: messageData?.message, authorDiscordId: messageData?.authorDiscordId }  });
+  if (messageData.authorName && messageData.message && messageData.authorDiscordId){
+    console.log("messageData.authorDiscordId", messageData.authorDiscordId)
+    let discordUser = await getDiscordUser(messageData.authorDiscordId)
+    console.log("sdfsdfs")
+    if (discordUser === null){
+      discordUser = await createDiscordUser(messageData.authorDiscordId, messageData.authorName)
+    }
+
+    console.log("discordUser", discordUser)
+
+    let newMessage = await prisma.message.create({ data: { message: messageData?.message, discordUserId: discordUser?.id }  });
 
     return NextResponse.json({ newMessage })
   } else {
